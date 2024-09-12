@@ -1,0 +1,16 @@
+.note-container {
+	display: flex;
+	justify-content: start;
+	margin: 2px;
+}
+
+.note-container textarea {
+	/* word-wrap: normal; */
+	width: 500px;
+	height: 100px;
+}
+
+.note-container button {
+	margin-left: 2px;
+	align-items: center;
+}
