@@ -5,7 +5,6 @@
 }
 
 .note-container textarea {
-	/* word-wrap: normal; */
 	width: 500px;
 	height: 100px;
 }
@@ -13,4 +12,9 @@
 .note-container button {
 	margin-left: 2px;
 	align-items: center;
+}
+
+.text-container textarea {
+	width: 500px;
+	height: 100px;
 }

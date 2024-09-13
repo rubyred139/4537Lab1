@@ -4,27 +4,21 @@ class ReaderPage extends WebNotes {
 		this.initializeUI();
 	}
 	initializeUI() {
-		super.readFromStorage();
-		this.displayExistedNotes();
-		window.addEventListener("storage", this.handleStorageEvent.bind(this));
+		this.readFromStorage();
+		this.displayText();
+		timeDisplay();
 	}
 
-	handleStorageEvent(event) {
-		if (event.storageArea === localStorage && event.key === "notes") {
-			// Check if the event is relevant
-			const notesJSON = localStorage.getItem("notes");
-			if (notesJSON) {
-				const notesArray = JSON.parse(notesJSON);
-				if (notesArray.length > this.displayedCount) {
-					const lastNote = notesArray[notesArray.length - 1];
-					const lastNoteId = lastNote.id;
-					const lastNoteContent = lastNote.content;
-					const noteObj = new NoteObj(lastNoteId, lastNoteContent);
-					this.notesContainer.append(noteObj.getNoteCombo());
-					this.displayedCount += 1;
-				}
-			}
-		}
+	displayText() {
+		this.notesArr.forEach((note) => {
+			const textContainer = document.createElement("div");
+			textContainer.setAttribute("id", `text-container-${this.id}`);
+			textContainer.classList.add("text-container");
+
+			const noteText = new TextArea(note.id, note.content);
+			textContainer.appendChild(noteText.newNote);
+			this.notesContainer.appendChild(textContainer);
+		});
 	}
 }
 
